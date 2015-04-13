@@ -1,0 +1,15 @@
+set -tmpdir /afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/synthesis/xst_temp_dir/
+run
+-opt_mode speed
+-netlist_hierarchy as_optimized
+-opt_level 1
+-p xc7z020clg484-1
+-top system
+-ifmt MIXED
+-ifn system_xst.prj
+-ofn ../implementation/system.ngc
+-hierarchy_separator /
+-iobuf YES
+-max_fanout 10000
+-sd {../implementation}
+-vlgincdir {"/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/pcores/" "/afs/tu-berlin.de/units/Fak_IV/aes/tools/xilinx/14.5/ISE_DS/EDK/hw/XilinxBFMinterface/pcores/" "/afs/tu-berlin.de/units/Fak_IV/aes/tools/xilinx/14.5/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/" }

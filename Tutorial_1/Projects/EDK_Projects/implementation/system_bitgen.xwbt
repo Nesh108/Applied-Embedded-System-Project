@@ -1,0 +1,7 @@
+INFILE=/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/implementation/system.ncd
+OUTFILE=/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/implementation/system.bit
+FAMILY=Zynq
+PART=xc7z020-1clg484
+WORKINGDIR=/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/implementation
+LICENSE=ISE
+USER_INFO=210680388_202152354_210595420_709

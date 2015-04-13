@@ -1,0 +1,16 @@
+
+<RENDERBATCH>
+
+  <RENDERIMG RASNAME="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/SDK/SDK_Export/hw/imgs/axi4lite_0.jpg" SVGNAME="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/SDK/SDK_Export/hw/imgs/axi4lite_0.svg" TMPSVGFN="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/__xps/.dswkshop/axi4lite_0.svg"/>
+
+  <RENDERIMG RASNAME="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/SDK/SDK_Export/hw/imgs/SWs_8Bits.jpg" SVGNAME="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/SDK/SDK_Export/hw/imgs/SWs_8Bits.svg" TMPSVGFN="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/__xps/.dswkshop/SWs_8Bits.svg"/>
+
+  <RENDERIMG RASNAME="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/SDK/SDK_Export/hw/imgs/LEDs_8Bits.jpg" SVGNAME="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/SDK/SDK_Export/hw/imgs/LEDs_8Bits.svg" TMPSVGFN="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/__xps/.dswkshop/LEDs_8Bits.svg"/>
+
+  <RENDERIMG RASNAME="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/SDK/SDK_Export/hw/imgs/BTNs_5Bits.jpg" SVGNAME="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/SDK/SDK_Export/hw/imgs/BTNs_5Bits.svg" TMPSVGFN="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/__xps/.dswkshop/BTNs_5Bits.svg"/>
+
+  <RENDERIMG RASNAME="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/SDK/SDK_Export/hw/imgs/processing_system7_0.jpg" SVGNAME="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/SDK/SDK_Export/hw/imgs/processing_system7_0.svg" TMPSVGFN="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/__xps/.dswkshop/processing_system7_0.svg"/>
+
+  <RENDERIMG RASNAME="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/SDK/SDK_Export/hw/imgs/system_blkd.jpg" SVGNAME="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/SDK/SDK_Export/hw/imgs/system_blkd.svg" TMPSVGFN="/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/Projects/EDK_Projects/__xps/.dswkshop/system_blkd.svg"/>
+
+</RENDERBATCH>
