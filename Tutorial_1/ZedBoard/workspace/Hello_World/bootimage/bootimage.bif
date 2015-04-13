@@ -1,0 +1,6 @@
+the_ROM_image:
+{
+	[bootloader]/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/ZedBoard/workspace/fsbl/Debug/fsbl.elf
+	/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/ZedBoard/workspace/EDK_Projects_hw_platform/system.bit
+	/afs/tu-berlin.de/home/a/avaccari/irb-ubuntu/AEP-Tutorial/Tutorial_1/ZedBoard/workspace/Hello_World/Debug/Hello_World.elf
+}

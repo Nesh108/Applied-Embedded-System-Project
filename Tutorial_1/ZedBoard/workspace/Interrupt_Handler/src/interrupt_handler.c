@@ -1,0 +1,111 @@
+/*
+ * Copyright (c) 2009-2012 Xilinx, Inc.  All rights reserved.
+ *
+ * Xilinx, Inc.
+ * XILINX IS PROVIDING THIS DESIGN, CODE, OR INFORMATION "AS IS" AS A
+ * COURTESY TO YOU.  BY PROVIDING THIS DESIGN, CODE, OR INFORMATION AS
+ * ONE POSSIBLE   IMPLEMENTATION OF THIS FEATURE, APPLICATION OR
+ * STANDARD, XILINX IS MAKING NO REPRESENTATION THAT THIS IMPLEMENTATION
+ * IS FREE FROM ANY CLAIMS OF INFRINGEMENT, AND YOU ARE RESPONSIBLE
+ * FOR OBTAINING ANY RIGHTS YOU MAY REQUIRE FOR YOUR IMPLEMENTATION.
+ * XILINX EXPRESSLY DISCLAIMS ANY WARRANTY WHATSOEVER WITH RESPECT TO
+ * THE ADEQUACY OF THE IMPLEMENTATION, INCLUDING BUT NOT LIMITED TO
+ * ANY WARRANTIES OR REPRESENTATIONS THAT THIS IMPLEMENTATION IS FREE
+ * FROM CLAIMS OF INFRINGEMENT, IMPLIED WARRANTIES OF MERCHANTABILITY
+ * AND FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ */
+
+/*
+ * helloworld.c: simple test application
+ *
+ * This application configures UART 16550 to baud rate 9600.
+ * PS7 UART (Zynq) is not initialized by this application, since
+ * bootrom/bsp configures it to baud rate 115200
+ *
+ * ------------------------------------------------
+ * | UART TYPE   BAUD RATE                        |
+ * ------------------------------------------------
+ *   uartns550   9600
+ *   uartlite    Configurable only in HW design
+ *   ps7_uart    115200 (configured by bootrom/bsp)
+ */
+
+#include <xscugic.h>
+#include <xgpio.h>
+#include <xgpio_l.h>
+#include <stdio.h>
+#include "xil_exception.h"
+#include "xparameters.h"
+//// Interrupt handler
+void GPIO_Handler(void *ref);
+
+//// This structure is used to define the interrupt handler parameters
+typedef struct intr_par
+{
+	XScuGic *intc; 	// Pointer to the interrupt controller instance. This is used inside
+					//the interrupt handler to access the interrupt controller
+	void *dev; 		// Pointer to the device initiated the interrupt
+} IntrPar;
+
+int main()
+{
+	//// a variable that will be passed to the interrupt handler
+	IntrPar par1;
+	int Status;
+
+	XScuGic_Config *GicConfig; 	//Pointer to configuration structure for PS7 interrupt controller
+	XScuGic intc; 				// This variable will be used to access the interrupt controller.
+	XGpio xgpio; 				// This variable will be used to access the GPIO
+	par1.intc = &intc; 			// Fill out the interrupt handler variable with a pointer to
+	par1.dev = (void *) &xgpio; //the interrupt controller and the GPIO variables
+	Xil_ExceptionInit(); 		//Initialize the exception system on ARM including interrupt
+
+	///// Initialize the GPIO and enable its interrupt
+	XGpio_Initialize(&xgpio, XPAR_SWS_8BITS_DEVICE_ID); 	// Initialize the GPIO variable
+	XGpio_SetDataDirection(&xgpio, 1, 0xFFFFFFFF); // Set the direction to Input
+	XGpio_InterruptEnable(&xgpio, XGPIO_IR_CH1_MASK); // Enable interrupts for CH1
+	XGpio_InterruptGlobalEnable(&xgpio); // Enable the global interrupt
+	///// Initialize the Interrupt controller variable
+	GicConfig = XScuGic_LookupConfig(XPAR_PS7_SCUGIC_0_DEVICE_ID);
+	if (NULL == GicConfig) {
+		return XST_FAILURE;
+	}
+	Status = XScuGic_CfgInitialize(&intc, GicConfig, GicConfig->CpuBaseAddress);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+	///// Connect the interrupt handler to the interrupt source
+	XScuGic_Connect(&intc, XPAR_FABRIC_GPIO_2_VEC_ID,
+			(Xil_InterruptHandler) GPIO_Handler, (void *) &par1);
+	///// Enable Interrupt source
+	XScuGic_Enable(&intc, XPAR_FABRIC_GPIO_2_VEC_ID); // Enable the interrupt source
+	///// Start the controller
+	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_IRQ_INT,
+			(Xil_ExceptionHandler) XScuGic_InterruptHandler, (void *) &intc);
+	Xil_ExceptionEnable();
+
+	///// Wait for ever!!
+	while (1) {
+		xil_printf("Waiting for interrupts.\r");
+	}
+	return 0;
+}
+
+///// GPIO interrupt handler
+void GPIO_Handler(void *ref) {
+	IntrPar *par = (IntrPar *) ref; 	// Read out the input parameters
+	// Disable microprocessor interrupts.
+	// This disable other interrupts until this one completed
+	Xil_ExceptionDisable();
+	// Disable the interrupts of the GPIO
+	XGpio_InterruptGlobalDisable((XGpio *) par->dev);
+	print("\r\nSwitch changed !!\r\n"); // Print some message
+	/// Clear the interrupt flag of the GPIO
+	XGpio_InterruptClear((XGpio *) par->dev, XGPIO_IR_CH1_MASK);
+	/// Enable GPIO interrupts to receive more interrupts
+	XGpio_InterruptGlobalEnable((XGpio *) par->dev);
+	/// Enable microprocessor interrupts
+	Xil_ExceptionEnable();
+	return; /// Return from the interrupt
+}

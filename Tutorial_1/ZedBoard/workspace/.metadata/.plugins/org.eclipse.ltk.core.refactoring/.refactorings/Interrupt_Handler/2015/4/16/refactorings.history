@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Interrupt_Handler/src/helloworld.c&apos; to &apos;interrupt_handler.c&apos;" description="Rename resource &apos;helloworld.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/helloworld.c" name="interrupt_handler.c" stamp="1428938192836" updateReferences="true"/>
+</session>

@@ -1,0 +1,21 @@
+17:42:24 **** Auto Build of configuration Debug for project Interrupt_Handler ****
+make all 
+Building file: ../src/interrupt_handler.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../Interrupt_Handler_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/interrupt_handler.d" -MT"src/interrupt_handler.d" -o "src/interrupt_handler.o" "../src/interrupt_handler.c"
+Finished building: ../src/interrupt_handler.c
+ 
+Building target: Interrupt_Handler.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Interrupt_Handler_bsp/ps7_cortexa9_0/lib -o "Interrupt_Handler.elf"  ./src/interrupt_handler.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Interrupt_Handler.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size Interrupt_Handler.elf  |tee "Interrupt_Handler.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  29916	   1920	  29796	  61632	   f0c0	Interrupt_Handler.elf
+Finished building: Interrupt_Handler.elf.size
+ 
+
+17:42:25 Build Finished (took 227ms)
+
